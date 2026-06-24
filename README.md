@@ -1,3 +1,11 @@
+<p align="center">
+  <a href="#english">🇬🇧 English</a> &nbsp;·&nbsp; <a href="#español">🇪🇸 Español</a>
+</p>
+
+---
+
+<a name="english"></a>
+
 # portscanner
 
 TCP port scanner for Windows written in C using Winsock2. Inspired by nmap-style output.
@@ -10,10 +18,10 @@ PORT       STATE      SERVICE        VERSION
 9929/tcp   open       nping-echo     -
 31337/tcp  open       elite          -
 
-RESUMEN
-Host escaneado : scanme.nmap.org
-Puertos        : 4 open  0 closed  65531 filtered
-Duracion       : 1834 segundos
+SUMMARY
+Host scanned   : scanme.nmap.org
+Ports          : 4 open  0 closed  65531 filtered
+Duration       : 1834 seconds
 ```
 
 ## Features
@@ -41,8 +49,6 @@ gcc portscanner.c -o portscanner.exe -lws2_32
 
 ### Interactive (double-click or run without args)
 
-The menu prompts for host, timing template, and port range:
-
 ```
 portscanner.exe
 ```
@@ -65,10 +71,10 @@ portscanner.exe 10.0.0.5 22 22
 
 | Mode | Timeout | Threads | Best for |
 |---|---|---|---|
-| T1 Silencioso | 2000 ms | 10 | Internet, IDS evasion |
-| T2 Educado | 1200 ms | 30 | Internet (recommended) |
+| T1 Silent | 2000 ms | 10 | Internet, IDS evasion |
+| T2 Polite | 1200 ms | 30 | Internet (recommended) |
 | T3 Normal | 700 ms | 75 | Local network (recommended) |
-| T4 Agresivo | 350 ms | 100 | Fast local network |
+| T4 Aggressive | 350 ms | 100 | Fast local network |
 
 For remote (non-RFC1918) hosts the scanner automatically caps threads to 25 regardless of the chosen template, to avoid packet loss from SYN flooding the path.
 
@@ -76,13 +82,13 @@ For remote (non-RFC1918) hosts the scanner automatically caps threads to 25 rega
 
 | Option | Ports |
 |---|---|
-| Comunes | 1–1024 |
+| Common | 1–1024 |
 | Web | 80, 443, 8080, 8443 |
-| Acceso remoto | 21, 22, 23, 3389, 5900 |
-| Bases de datos | 1433, 3306, 5432, 6379, 27017 |
-| Todos | 1–65535 |
-| Un solo puerto | custom |
-| Rango manual | custom |
+| Remote access | 21, 22, 23, 3389, 5900 |
+| Databases | 1433, 3306, 5432, 6379, 27017 |
+| All | 1–65535 |
+| Single port | custom |
+| Manual range | custom |
 
 ## Legal
 
@@ -91,5 +97,69 @@ Only scan systems you own or have explicit written permission to test. Unauthori
 Public host authorized for testing: `scanme.nmap.org`
 
 ## License
+
+MIT
+
+---
+
+<a name="español"></a>
+
+# portscanner
+
+Escáner de puertos TCP para Windows escrito en C con Winsock2. Inspirado en la salida de nmap.
+
+## Características
+
+- Tres estados de puerto: **open**, **closed**, **filtered**
+- Banner grabbing con detección de versión: SSH, HTTP, FTP, SMTP, POP3, IMAP
+- Base de datos de servicios con más de 80 mapeos puerto→nombre
+- 4 plantillas de velocidad (T1–T4) con límite automático de hilos para hosts remotos
+- Escaneo multihilo con hilos de Windows (CreateThread)
+- Salida en columnas estilo nmap con colores
+- Barra de progreso con ETA
+- Menú interactivo (doble clic en .exe) o modo CLI
+- Exportación opcional de resultados a fichero .txt con marca de tiempo
+- Grupos de puertos predefinidos: Web, Acceso remoto, Bases de datos
+
+## Compilación
+
+Requiere [MSYS2](https://www.msys2.org/) con MinGW-w64:
+
+```bash
+gcc portscanner.c -o portscanner.exe -lws2_32
+```
+
+## Uso
+
+### Interactivo (doble clic o sin argumentos)
+
+```
+portscanner.exe
+```
+
+### Modo CLI
+
+```
+portscanner.exe <host> <puerto_inicio> <puerto_fin>
+```
+
+## Plantillas de velocidad
+
+| Modo | Timeout | Hilos | Recomendado para |
+|---|---|---|---|
+| T1 Silencioso | 2000 ms | 10 | Internet, evasión de IDS |
+| T2 Educado | 1200 ms | 30 | Internet (recomendado) |
+| T3 Normal | 700 ms | 75 | Red local (recomendado) |
+| T4 Agresivo | 350 ms | 100 | Red local rápida |
+
+Para hosts remotos (no RFC1918) el escáner limita automáticamente los hilos a 25, para evitar pérdida de paquetes por SYN flooding.
+
+## Aviso legal
+
+Solo escanea sistemas de tu propiedad o con permiso escrito explícito. El escaneo de puertos no autorizado puede ser ilegal en tu jurisdicción.
+
+Host público autorizado para pruebas: `scanme.nmap.org`
+
+## Licencia
 
 MIT
