@@ -100,6 +100,12 @@ Public host authorized for testing: `scanme.nmap.org`
 
 MIT
 
+## Security
+
+Automated security reviews are powered by [Claude](https://claude.ai) (Anthropic AI) and run on every significant change to detect vulnerabilities, insecure patterns and dependency risks. Findings are tracked in `BUGLOG.md`.
+
+Found a vulnerability? Open an issue or contact directly.
+
 ---
 
 <a name="español"></a>
@@ -160,6 +166,11 @@ Solo escanea sistemas de tu propiedad o con permiso escrito explícito. El escan
 
 Host público autorizado para pruebas: `scanme.nmap.org`
 
+## Seguridad
+
+Las revisiones de seguridad automatizadas utilizan [Claude](https://claude.ai) (Anthropic AI) y se ejecutan en cada cambio significativo para detectar vulnerabilidades, patrones inseguros y riesgos en dependencias. Los hallazgos se registran en `BUGLOG.md`.
+
+¿Encontraste una vulnerabilidad? Abre un issue o contacta directamente.
 ## Licencia
 
 MIT
