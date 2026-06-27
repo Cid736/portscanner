@@ -508,6 +508,7 @@ int main(int argc, char *argv[]) {
     /* ── Terminal mode: portscanner.exe <host> <start> <end> ── */
     if (argc==4) {
         strncpy(host,argv[1],MAX_HOST);
+        host[MAX_HOST]='\0';  /* explicit null-termination guarantee */
         char *e1,*e2;
         long s=strtol(argv[2],&e1,10), en=strtol(argv[3],&e2,10);
         if(*e1||*e2||s<1||en>MAX_PORTS||s>en){
@@ -535,6 +536,7 @@ int main(int argc, char *argv[]) {
             } else break;
         } while(1);
         strncpy(host,buf,MAX_HOST);
+        host[MAX_HOST]='\0';  /* explicit null-termination guarantee */
 
         /* Timing */
         printf("\n");
